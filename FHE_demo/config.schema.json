@@ -1,0 +1,84 @@
+{
+  "pluginAlias": "FHEM",
+  "pluginType": "platform",
+  "headerDisplay": "HomeKit support for the FHEM home automation system. See the [homebridge-fhem](https://github.com/justme-1968/homebridge-fhem) developer page for documentation.",
+  "footerDisplay": "Find out more about FHEM on its [project page](https://fhem.de).",
+  "singular": false,
+
+  "schema": {
+    "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "required": false,
+          "default": "FHEM",
+          "placeholder": "e.g. FHEM",
+          "description": "Name for this FHEM connection."
+        },
+
+        "server": {
+          "type": "string",
+          "format": "hostname",
+          "title": "Server",
+          "required": true,
+          "default": "localhost",
+          "placeholder": "e.g. localhost",
+          "description": "IP Address / Hostname of the FHEM server"
+        },
+
+        "port": {
+          "type": "integer",
+          "title": "FHEM port",
+          "required": true,
+          "default": "8083",
+          "description": "fhemweb port"
+        },
+
+        "filter": {
+          "type": "string",
+          "title": "Filter",
+          "required": true,
+          "default": "siriName=.+",
+          "placeholder": "devspec",
+          "description": "devspec that matches the devices that should be exported to homebridge."
+        },
+
+        "ssl": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "use ssl/https when connecting to fhem"
+        },
+
+	        "auth": {
+          "type": "object",
+          "required": false,
+          "#description": "user & password for this FHEM connection",
+          "properties": {
+            "user": {
+              "type": "string",
+              "title": "Name",
+              "required": false,
+              "#placeholder": "<user>",
+              "description": "user for this FHEM connection."
+            },
+            "pass": {
+              "type": "string",
+              "title": "Server",
+              "required": false,
+              "#placeholder": "<password>",
+              "description": "password for this FHEM connection."
+            }
+          }
+        },
+
+        "neverTimeout": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "never timeout if trying to reconnect"
+        }
+     }
+  }
+}
